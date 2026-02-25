@@ -8,7 +8,6 @@ import {
   StatusPanel,
   MobileWarningModal,
   PizzIntIndicator,
-  CIIPanel,
   PredictionPanel,
 } from '@/components';
 import {
@@ -258,7 +257,7 @@ export class EventHandlerManager implements AppModule {
     document.addEventListener('visibilitychange', this.boundVisibilityHandler);
 
     window.addEventListener('focal-points-ready', () => {
-      (this.ctx.panels['cii'] as CIIPanel)?.refresh(true);
+      (this.ctx.panels['cii'] as { refresh?: (force?: boolean) => void })?.refresh?.(true);
     });
 
     window.addEventListener('theme-changed', () => {
